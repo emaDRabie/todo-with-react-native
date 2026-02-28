@@ -1,97 +1,257 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Pro Task Manager
 
-# Getting Started
+A modern, robust, and feature-rich to‑do list application built with **React Native CLI** and **TypeScript**. Pro Task Manager focuses on delivering a seamless user experience with interactive swipe gestures, dynamic theming, and reliable local data persistence.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### Dynamic Theming
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Smooth toggle between **Light** and **Dark** modes.
+- Implemented using the **React Context API** for global theme management.
+- Centralized, strongly typed color system for consistent UI across the app.
 
-```sh
-# Using npm
-npm start
+### Interactive Gestures (Swipeable)
 
-# OR using Yarn
-yarn start
+Powered by **`react-native-gesture-handler`**:
+
+- **Swipe Left** → Delete a task  
+  - Displays a native confirmation alert to prevent accidental deletions.
+- **Swipe Right** → Toggle task status  
+  - Switch between:
+    - **Done** (Green)
+    - **Pending / Undo** (Orange)
+  - UI updates dynamically (text, colors, and status indicators).
+
+### Modern UI and UX
+
+- **Floating Action Button (FAB)** for quick task creation.
+- **Interactive Bottom Sheet / Modal**:
+  - Clean, focused interface for entering task details.
+  - Smooth animations and intuitive layout.
+- Thoughtful spacing and typography for better readability.
+
+### Smart Date Integration
+
+- Native date selection powered by **`react-native-date-picker`**.
+- Assign deadlines and due dates to tasks.
+- Deadlines are displayed alongside tasks for better planning.
+
+### Local Data Persistence
+
+- Tasks are stored locally on the device using **`@react-native-async-storage/async-storage`** (v1.23.1 for maximum stability).
+- All tasks, statuses, and deadlines persist between sessions.
+- No backend required; works completely offline.
+
+### Safe Area and Device Compatibility
+
+- Seamless rendering on devices with **notches**, **punch holes**, and **dynamic islands**.
+- Implemented via **`react-native-safe-area-context`** for consistent padding and layout behavior across platforms.
+
+---
+
+## Tech Stack
+
+- **Framework:** React Native CLI (no Expo)
+- **Language:** TypeScript
+- **Core Libraries and Tools:**
+  - **State Management:** React Hooks (`useState`, `useEffect`, `useContext`)
+  - **Local Storage:** `@react-native-async-storage/async-storage`
+  - **Gestures and Interactions:** `react-native-gesture-handler`
+  - **UI Utilities:** React Native Modal, Bottom Sheet pattern
+  - **Layout and Safe Areas:** `react-native-safe-area-context`
+
+---
+
+## Project Structure
+
+```text
+ToDo-App/
+├── android/                        # Native Android project configuration
+├── ios/                            # Native iOS project configuration (requires macOS)
+├── src/                            # Main application source code
+│   ├── constants/
+│   │   └── colors.ts               # Centralized theme colors (Light and Dark objects)
+│   ├── screens/
+│   │   └── TodoScreen.tsx          # Main screen: list rendering, business logic, Bottom Sheet
+├── assets/
+│   └── fonts/                      # Custom fonts (e.g., Poppins, Cairo)
+├── App.tsx                         # Entry point: providers (Gesture, SafeArea, Theme)
+├── react-native.config.js          # Linking configuration for custom assets/fonts
+├── package.json                    # Dependencies and scripts
+└── README.md                       # Project documentation
 ```
 
-## Step 2: Build and run your app
+**Key Architecture Notes:**
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- **Single Source of Truth for Theme:**  
+  All theming logic and color palettes live under `src/constants/colors.ts` and context providers.
+- **Separation of Concerns:**  
+  UI, business logic, and configuration are organized into clear, maintainable modules.
+- **Typed Codebase:**  
+  TypeScript typings improve reliability, auto-completion, and future scalability.
 
-### Android
+---
 
-```sh
-# Using npm
-npm run android
+## Screenshots
 
-# OR using Yarn
-yarn android
+All screenshots are assumed to be located under a `screenshots/` directory at the project root and are PNG files.
+
+### Overview
+
+| Light Mode – Task List                              | Dark Mode – Task List                            | Completed Tasks View                              |
+|-----------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
+| ![Light Mode List](screenshots/light_mode_list.png) | ![Dark Mode List](screenshots/dark_mode_list.png) | ![Completed Tasks](screenshots/complete.png)     |
+
+| Undo Completed Task                                 | Delete Task Action                               | Date Picker                                      |
+|-----------------------------------------------------|--------------------------------------------------|-------------------------------------------------|
+| ![Undo Complete](screenshots/undo_complete.png)     | ![Delete Task](screenshots/delete_task.png)      | ![Date Picker](screenshots/date_picker.png)     |
+
+| Add Task – Dark Mode                                | Add Task – Light Mode                            |                                                  |
+|-----------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
+| ![Add Task Dark](screenshots/add_task_dark.png)     | ![Add Task Light](screenshots/add_task_light.png) |                                                  |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed and configured:
+
+- **Node.js** (LTS recommended)
+- **Yarn** or **npm**
+- **React Native CLI**
+- **Android Studio** and/or **Xcode** (for emulators and native builds)
+- Properly configured **Android** and/or **iOS** environment variables
+
+For full details on environment configuration, see the official React Native documentation:  
+[React Native Environment Setup](https://reactnative.dev/docs/environment-setup)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <REPO_URL>
+   cd ToDo-App
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   # using yarn
+   yarn install
+
+   # or using npm
+   npm install
+   ```
+
+3. Link native dependencies (if required by your React Native version):
+
+   ```bash
+   npx react-native link
+   ```
+
+4. Start Metro Bundler:
+
+   ```bash
+   npx react-native start
+   ```
+
+### Running on Android
+
+```bash
+npx react-native run-android
 ```
 
-### iOS
+Ensure an Android emulator is running or a physical device is connected and authorized.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### Running on iOS (macOS only)
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+cd ios
+pod install
+cd ..
+npx react-native run-ios
 ```
 
-Then, and every time you update your native dependencies, run:
+Ensure that Xcode and CocoaPods are properly installed and configured.
 
-```sh
-bundle exec pod install
-```
+---
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Configuration and Customization
 
-```sh
-# Using npm
-npm run ios
+### Theming
 
-# OR using Yarn
-yarn ios
-```
+- Update global colors in:
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+  ```text
+  src/constants/colors.ts
+  ```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+- You can extend or adjust:
+  - Theme variants (e.g., High Contrast, AMOLED Dark).
+  - Brand-specific color tokens.
+  - Typography scale and spacing system.
 
-## Step 3: Modify your app
+### Fonts
 
-Now that you have successfully run the app, let's make changes!
+- Place your custom font files (for example, `Poppins`, `Cairo`) in:
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+  ```text
+  assets/fonts/
+  ```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+- Ensure they are referenced in:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+  ```text
+  react-native.config.js
+  ```
 
-## Congratulations! :tada:
+- Then run:
 
-You've successfully run and modified your React Native App. :partying_face:
+  ```bash
+  npx react-native link
+  ```
 
-### Now what?
+---
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+## Roadmap and Possible Enhancements
 
-# Troubleshooting
+Potential future improvements:
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- [ ] Task categories or labels (for example, Work, Personal, Urgent)
+- [ ] Search and filter functionality
+- [ ] Sorting by deadline, creation date, or status
+- [ ] Notifications and reminders for upcoming deadlines
+- [ ] Multi-language (i18n) support
+- [ ] Export and import tasks (backup and restore)
 
-# Learn More
+Contributions and suggestions are welcome. You can open an issue or submit a pull request if you would like to propose enhancements.
 
-To learn more about React Native, take a look at the following resources:
+---
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## About the Developer
+
+Developed by **Emad (@iEmadRabie)**, a Computer Engineering student with a strong interest in:
+
+- Building clean, high-performance mobile applications
+- Advanced Android and cross-platform development
+- Designing maintainable, scalable, and well-structured codebases
+
+If you find this project useful:
+
+- Star the repository
+- Report issues you encounter
+- Contribute through pull requests
+
+Feedback and contributions are highly appreciated.
+
+---
+
+## License
+
+This project is provided for learning and portfolio purposes.  
+If you plan to use it in a commercial context, please open an issue to discuss licensing or attribution terms.

@@ -19,3 +19,9 @@ Instead of writing separate code in Swift/Objective-C (for iOS) and Kotlin/Java 
 All projects here focus on applying mobile computing principles using modern React Native practices.
 
 Happy coding!
+
+## Project List
+
+| Project Name | Expo Snack Link |
+| ------------ | ---------------- |
+| ToDo         | [Open in Snack](https://snack.expo.dev/@emadrabie046/smart-todo?platform=web) |

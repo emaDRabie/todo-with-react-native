@@ -94,25 +94,49 @@ ToDo-App/
 
 ---
 
-## Screenshots
+#### Screenshots
 
-All screenshots are assumed to be located under a `screenshots/` directory at the project root and are PNG files.
-
-### Overview
-
-| Light Mode – Task List                              | Dark Mode – Task List                            | Completed Tasks View                              |
-|-----------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
-| ![Light Mode List](screenshots/light_mode_list.png) | ![Dark Mode List](screenshots/dark_mode_list.png) | ![Completed Tasks](screenshots/complete.png)     |
-
-| Undo Completed Task                                 | Delete Task Action                               | Date Picker                                      |
-|-----------------------------------------------------|--------------------------------------------------|-------------------------------------------------|
-| ![Undo Complete](screenshots/undo_complete.png)     | ![Delete Task](screenshots/delete_task.png)      | ![Date Picker](screenshots/date_picker.png)     |
-
-| Add Task – Dark Mode                                | Add Task – Light Mode                            |                                                  |
-|-----------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
-| ![Add Task Dark](screenshots/add_task_dark.png)     | ![Add Task Light](screenshots/add_task_light.png) |                                                  |
-
----
+<table>
+  <tr>
+    <td align="center">
+      <strong>Light Mode – List</strong><br />
+      <img src="screenshots/light_mode_list.png" width="320" />
+    </td>
+    <td align="center">
+      <strong>Dark Mode – List</strong><br />
+      <img src="screenshots/dark_mode_list.png" width="320" />
+    </td>
+    <td align="center">
+      <strong>Completed Tasks</strong><br />
+      <img src="screenshots/complete.png" width="320" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>Undo Complete</strong><br />
+      <img src="screenshots/undo_complete.png" width="320" />
+    </td>
+    <td align="center">
+      <strong>Delete Task</strong><br />
+      <img src="screenshots/delete_task.png" width="320" />
+    </td>
+    <td align="center">
+      <strong>Date Picker</strong><br />
+      <img src="screenshots/date_picker.png" width="320" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>Add Task – Dark</strong><br />
+      <img src="screenshots/add_task_dark.png" width="320" />
+    </td>
+    <td align="center">
+      <strong>Add Task – Light</strong><br />
+      <img src="screenshots/add_task_light.png" width="320" />
+    </td>
+    <td></td>
+  </tr>
+</table>
 
 ## Getting Started
 
